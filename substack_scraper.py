@@ -381,9 +381,6 @@ class SubstackScraper(BaseSubstackScraper):
         try:
             page = requests.get(url, headers=None)
             soup = BeautifulSoup(page.content, "html.parser")
-            if soup.find("h2", class_="paywall-title"):
-                print(f"Skipping premium article: {url}")
-                return None
             return soup
         except Exception as e:
             raise ValueError(f"Error fetching page: {e}") from e
